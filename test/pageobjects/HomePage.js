@@ -9,7 +9,7 @@ class HomePage {
     //get logo() {return $('a.logo__link')};
     //get searchBox() {return $('div.SearchBar__view > input')};
     get header() {return Header};
-    get jumbotron() {return $('.BrazeJumbotronCarousel__Slider')};
+    get jumbotron() {return $('div.BrazeJumbotronCarousel__Slider')};
     get footer() {return Footer};
 
     /******************/
@@ -27,10 +27,9 @@ class HomePage {
     * Checks whether required elements are displayed
     */
     isLoaded() {
-        return expect(this.header.logo).toBeDisplayed 
-            && expect(this.header.searchBox).toBeDisplayed
-            && expect(this.jumbotron).toBeDisplayed
-            && expect(this.footer.isLoaded());
+        this.header.isLoaded();
+        this.footer.isLoaded();
+        this.jumbotron.waitForDisplayed({timeout:15000});
             
     }
 }
