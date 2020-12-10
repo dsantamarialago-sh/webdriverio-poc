@@ -10,19 +10,11 @@ class Header {
     /** Page actions **/
     /******************/
 
-    /**
-    * Opens Home page
-    */
-    open() {
-        return browser.url(`https://www.stubhubstage.com`);
-    }
-
     /*
     * Checks whether required elements are displayed
     */
     isLoaded() {
         return expect(this.logo).toBeDisplayed 
-            && expect(this.jumbotron).toBeDisplayed 
             && expect(this.searchBox).toBeDisplayed;
     }
 }
