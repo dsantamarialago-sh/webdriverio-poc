@@ -1,24 +1,31 @@
-/**
-* main page object containing all methods, selectors and functionality
-* that is shared across all page objects
-*/
-module.exports = class Page {
-    /**
-     * Page Elements
-     */
+class HomePage {
+    /*******************/
+    /** Page Elements **/
+    /*******************/
 
-    get searchBox() {return $('.SearchBar > input')}    
-    get jumbotron() {return $('.BrazeJumbotronCarousel')}
+    get logo() {return $('a.logo__link')};
+    get searchBox() {return $('div.SearchBar__view > input')};
+    get jumbotron() {return $('.BrazeJumbotronCarousel__Slider')};
+
+    /******************/
+    /** Page actions **/
+    /******************/
 
     /**
-    * Opens a sub page of the page
-    * @param path path of the sub page (e.g. /path/to/page.html)
+    * Opens Home page
     */
-    open (path) {
+    open() {
         return browser.url(`https://www.stubhubstage.com`);
     }
 
+    /*
+    * Checks whether required elements are displayed
+    */
     isLoaded() {
-        return this.assert.elementIsVisible(this.searchBox) && this.assert.elementIsVisible(this.jumbotron)
+        return expect(this.logo).toBeDisplayed 
+            && expect(this.jumbotron).toBeDisplayed 
+            && expect(this.searchBox).toBeDisplayed;
     }
 }
+
+module.exports = new HomePage()
