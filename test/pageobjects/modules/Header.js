@@ -14,8 +14,8 @@ class Header {
     * Checks whether required elements are displayed
     */
     isLoaded() {
-        return expect(this.logo).toBeDisplayed 
-            && expect(this.searchBox).toBeDisplayed;
+        this.logo.waitForDisplayed;
+        this.searchBox.waitForDisplayed;
     }
 }
 

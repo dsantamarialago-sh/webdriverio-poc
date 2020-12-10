@@ -14,8 +14,8 @@ class Footer {
     * Checks whether required elements are displayed
     */
     isLoaded() {
-        return expect(this.fanProtectLink).toBeDisplayed 
-            && expect(this.fanProtectLogo).toBeDisplayed;
+        this.fanProtectLink.waitForDisplayed;
+        this.fanProtectLogo.waitForDisplayed;
     }
 }
 
