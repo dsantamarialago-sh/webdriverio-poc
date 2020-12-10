@@ -1,4 +1,3 @@
-const { header } = require('../pageobjects/HomePage');
 const homePage = require('../pageobjects/HomePage');
 
 describe('SH home page', () => {

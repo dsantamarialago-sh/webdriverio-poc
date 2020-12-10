@@ -6,8 +6,6 @@ class HomePage {
     /** Page Elements **/
     /*******************/
 
-    //get logo() {return $('a.logo__link')};
-    //get searchBox() {return $('div.SearchBar__view > input')};
     get header() {return Header};
     get jumbotron() {return $('div.BrazeJumbotronCarousel__Slider')};
     get footer() {return Footer};
