@@ -1,24 +1,35 @@
-/**
-* main page object containing all methods, selectors and functionality
-* that is shared across all page objects
-*/
-module.exports = class Page {
-    /**
-     * Page Elements
-     */
+const Header = require('./modules/Header');
+const Footer = require('./modules/Footer');
 
-    get searchBox() {return $('.SearchBar > input')}    
-    get jumbotron() {return $('.BrazeJumbotronCarousel')}
+class HomePage {
+    /*******************/
+    /** Page Elements **/
+    /*******************/
+
+    get header() {return Header};
+    get jumbotron() {return $('div.BrazeJumbotronCarousel__Slider')};
+    get footer() {return Footer};
+
+    /******************/
+    /** Page actions **/
+    /******************/
 
     /**
-    * Opens a sub page of the page
-    * @param path path of the sub page (e.g. /path/to/page.html)
+    * Opens Home page
     */
-    open (path) {
+    open() {
         return browser.url(`https://www.stubhubstage.com`);
     }
 
+    /*
+    * Checks whether required elements are displayed
+    */
     isLoaded() {
-        return this.assert.elementIsVisible(this.searchBox) && this.assert.elementIsVisible(this.jumbotron)
+        this.header.isLoaded();
+        this.footer.isLoaded();
+        this.jumbotron.waitForDisplayed({timeout:15000});
+            
     }
 }
+
+module.exports = new HomePage();
