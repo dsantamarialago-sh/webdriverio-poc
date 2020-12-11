@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio wdio.conf.js",
-    "test:multi": "npx wdio wdio.multibrowser.conf.js"
+    "test:debug": "clear && npx wdio wdio.debug.conf.js",
+    "test:multi": "clear && npx wdio wdio.multibrowser.conf.js"
   },
   "keywords": [],
   "author": "",
