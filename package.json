@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio wdio.conf.js",
-    "testMultiBrowser": "npx wdio wdio.multibrowser.conf.js"
+    "test:multi": "npx wdio wdio.multibrowser.conf.js"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,6 @@
     "@wdio/mocha-framework": "^6.10.4",
     "@wdio/selenium-standalone-service": "^6.10.4",
     "@wdio/spec-reporter": "^6.8.1",
-    "@wdio/sync": "^6.10.4",
-    "chromedriver": "^86.0.0"
+    "@wdio/sync": "^6.10.4"
   }
 }
