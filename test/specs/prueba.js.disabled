@@ -17,8 +17,7 @@ describe('SH home page', () => {
     it('should open SH home page and another tab with SH Login page', () => {
         homePage.open();
         homePage.isLoaded();
-        //const initialTab = browser.getWindowHandle();
-
+        
         loginPage.openInNewTab(browser.getUrl());
         const tabs = browser.getWindowHandles();
         console.log(`>>> TABS: ${tabs[1]}`);

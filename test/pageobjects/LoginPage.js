@@ -43,7 +43,9 @@ class LoginPage {
     }
 
     /**
-     * Check for required elements to be displayed
+     * Performs login
+     * @param {*} username User email
+     * @param {*} password User pass
      */
     isLoaded(){
         this.inputPassword.waitForDisplayed({timeout:15000});

@@ -6,7 +6,10 @@
   "scripts": {
     "test": "npx wdio wdio.conf.js",
     "test:debug": "clear && npx wdio wdio.debug.conf.js",
-    "test:multi": "clear && npx wdio wdio.multibrowser.conf.js"
+    "test:multi": "clear && npx wdio wdio.multibrowser.conf.js",
+    "test:firefox": "clear && npx wdio wdio.firefox.conf.js",
+    "test:safari": "clear && npx wdio wdio.safari.conf.js",
+    "test:chrome": "clear && npx wdio wdio.chrome.conf.js"
   },
   "keywords": [],
   "author": "",
