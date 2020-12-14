@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio wdio.conf.js",
-    "test:multi": "npx wdio wdio.multibrowser.conf.js"
+    "test:multi": "npx wdio wdio.multibrowser.conf.js",
+    "test:ie11": "clear && npx wdio wdio.ie11.conf.js",
+    "test:firefox": "clear && npx wdio wdio.firefox.conf.js",
+    "test:safari": "clear && npx wdio wdio.safari.conf.js",
+    "test:chrome": "clear && npx wdio wdio.chrome.conf.js"
   },
   "keywords": [],
   "author": "",
