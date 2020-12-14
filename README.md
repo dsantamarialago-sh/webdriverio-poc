@@ -1,4 +1,4 @@
-# webdriverio-poc
+# WebdriverIO-poc
 
 Proof of concept for WebdriverIO: browser and mobile automation test framework for Node.js
 
