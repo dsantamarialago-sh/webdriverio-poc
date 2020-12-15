@@ -1,4 +1,3 @@
-//const i18n = require('../utils/i18n-loader');
 const propsReader = require('properties-reader');
 const homePage = require('../pageobjects/HomePage');
 
@@ -27,7 +26,9 @@ describe('SH home page', () => {
         const expectedEsText = propsEs.get('Header.menu.my-profile');           
         console.log(`>>> Expected ES: ${expectedEsText}`);
 
+        browser.saveScreenshot('./screenshots/image.png');
         expect(homePage.header.signInText).toHaveText(expectedEnText);
         expect(homePage.header.signInText).not.toHaveText(expectedEsText);
+    
     });
 });
