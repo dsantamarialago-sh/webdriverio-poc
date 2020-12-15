@@ -46,7 +46,8 @@ capabilities: [{
       }
      },{
      browserName: 'safari'
-}],``` 
+}]
+``` 
 
 
 
