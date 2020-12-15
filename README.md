@@ -25,6 +25,32 @@ To launch the tests in a specific browser
 ```
 ## Usage
 
+### Execute in different browser parallely
+
+*File wdio.conf.js*
+
+###### ``` maxInstances: 10 ``` 
+How many spec can you execute simultaneously. If you have 10 spec files and maxInstance=10, then all spec files will get tested at the same time in 10 processes
+
+
+###### Capabilities
+Array of browser you want to execute your test suite 
+ ```    
+capabilities: [{
+     browserName: 'chrome',
+     acceptInsecureCerts: true
+     },{            
+     browserName: 'firefox',
+     'moz:firefoxOptions': {
+       binary: '/Applications/Firefox.app/Contents/MacOS/firefox'
+      }
+     },{
+     browserName: 'safari'
+}],``` 
+
+
+
+
 ### Page Object Pattern
 
 By introducing the "elements as first class citizens" principle, it is now possible to build up large test suites using this pattern. There are no additional packages required to create page objects.
