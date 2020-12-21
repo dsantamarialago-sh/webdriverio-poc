@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio wdio.conf.js",
+    "test:debug": "DEBUG=TRUE npx wdio wdio.debug.conf.js",
     "test:multi": "npx wdio wdio.multibrowser.conf.js",
     "test:ie11": "clear && npx wdio wdio.ie11.conf.js",
     "test:firefox": "clear && npx wdio wdio.firefox.conf.js",
