@@ -19,6 +19,27 @@ exports.config = {
     specs: [
         './test/specs/**/*.js'
     ],
+
+    // define specific suites
+    suites: {
+        login: [
+            './test/specs/login.success.spec.js',
+            './test/specs/login.failure.spec.js'
+        ],
+        buyFeature: [
+            './test/specs/buy.success.spec.js',
+            './test/specs/buy.failure.spec.js'
+        ],
+        ok: [
+            './test/specs/login.success.spec.js',
+            './test/specs/buy.success.spec.js'
+        ],
+        error: [
+            './test/specs/login.failure.spec.js',
+            './test/specs/buy.failure.spec.js'
+        ]
+    },
+
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
