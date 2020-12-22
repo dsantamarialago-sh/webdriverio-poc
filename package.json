@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio wdio.conf.js",
+    "test:performance": "clear && npx wdio wdio.performance.conf.js",
     "test:multi": "npx wdio wdio.multibrowser.conf.js",
     "test:ie11": "clear && npx wdio wdio.ie11.conf.js",
     "test:firefox": "clear && npx wdio wdio.firefox.conf.js",
@@ -20,6 +21,11 @@
     "@wdio/mocha-framework": "^6.10.4",
     "@wdio/selenium-standalone-service": "^6.10.4",
     "@wdio/spec-reporter": "^6.8.1",
-    "@wdio/sync": "^6.10.4"
+    "@wdio/sync": "^6.10.4",
+    "properties-reader": "^2.1.1",
+    "chai": "^4.2.0",
+    "@wdio/devtools-service": "^5.10.6",
+    "wdio-chromedriver-service": "^6.0.3",
+    "webdriverio": "^6.1.12"
   }
 }
