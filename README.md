@@ -10,17 +10,17 @@ Once the repository has been downloaded, only the following will be necessary to
 
 Install WebdriverIO CLI:
 
-```groovy
+```javascript
 $ npm i --save-dev @wdio/cli
 ```
 
 Start the TestRunner:
-```groovy
+```javascript
 $ npx wdio wdio.conf.js
 ```
 
 To launch the tests in a specific browser
-```groovy
+```javascript
  npm run test:chrome
 ```
 ## Usage
@@ -35,7 +35,7 @@ How many spec can you execute simultaneously. If you have 10 spec files and maxI
 
 ###### Capabilities
 Array of browser you want to execute your test suite 
- ```    
+ ```javascript    
 capabilities: [{
      browserName: 'chrome',
      acceptInsecureCerts: true
@@ -62,12 +62,12 @@ The goal of using page objects is to abstract any page information away from the
 
 This class will define the specific components and methods of this page. If there any component of the page that will be reused, such as the header and the footer, it is advisable that they be defined in differentiated modules.
 In this way we can import them into different Page Class using the command
-```groovy
+```javascript
 get header() {return Header};
 ```
 
 Home Page own methods:
-```groovy
+```javascript
     /**
     * Opens Home page
     */
@@ -88,12 +88,12 @@ Home Page own methods:
 
 It will be necessary to export the Page using the instruction
 
-```groovy
+```javascript
 module.exports = new HomePage();
 ```
 and import it into the tests - spec folder
 
-```groovy
+```javascript
 const homePage = require('../pageobjects/HomePage');
 ```
 ...
@@ -104,7 +104,7 @@ For starters, it is very helpful to limit parallelism by settings `maxInstances=
 
 ``wdio.conf.io``
 
-```
+```javascript
 const debug = process.env.DEBUG
 
 exports.config = {
@@ -143,7 +143,7 @@ Execute debug commands
 
 Download plugin Javascript Debugger (nightly) for VsCode and create a profile file in `.vscode/launch.json`
 
-```
+```javascript
 {
     "name": "description",
     "type": "node",
@@ -164,7 +164,7 @@ Tests can be executed on a remote Selenium Grid. In order to do so, some config 
 
 ### Set environment variable for proxy
 
-As conection between your computer and the Grid located in GCP is only available through a proxy, an environment variable should be set for the tests to go through that proxy (SLCD000MGT001). Global Agent library will handle the proxy connection from your tests. 
+As conection between your computer and the Grid located in GCP is only available through a proxy, an environment variable should be set for the tests to go through that proxy (SLCD000MGT001). [Global Agent](https://github.com/gajus/global-agent) library will handle the proxy connection from your tests. 
 
 ```export GLOBAL_AGENT_HTTP_PROXY=http://10.131.71.31:80```
 
@@ -172,13 +172,14 @@ As conection between your computer and the Grid located in GCP is only available
 
 This variables should be set in your wdio conf file:
 
-```// Selenium Grid Options
+```javascript
+    // Selenium Grid Options
     protocol: 'http',           // Protocol to connect to Selenium hub ("http" or "https")
     hostname: '10.180.18.129',  // Selenium hub's IP || Selenium hub's URL
     port: 4444,                 // Selenium hub's port
     path: '/wd/hub',            // Selenium hub's register path
 ```
-You can also make use of wdio.grid.conf.js included in this repo. 
+You can also make use of *wdio.grid.conf.js* included in this repo. 
 
 ### Running the tests on the grid
 
@@ -186,16 +187,16 @@ In order to run the tests, just use this command:
 
 ```npx wdio ./config/wdio.grid.conf.js```
 
-Or you can use the script included in this package.json
+Or you can use the script included in this repo's *package.json*
 
 ```npm run tests:remote```
 
 ### Debugging tests on the grid
 
-If your tests are failing and you want to see their live execution, we setup for you another hub with VNC capabilities. To run it there you should use wdio.grid.debug.conf.js config (or change Hub's IP to 10.180.18.130). The nodes connected to this hub have port 5900 (chrome) and 5901 (firefox) opened to incoming connections using VNC viewer. Follow these steps:
+If your tests are failing and you want to see their live execution, we setup for you another hub with VNC capabilities. To run it there you should use **wdio.grid.debug.conf.js config** (or change Hub's IP to 10.180.18.130). The nodes connected to this hub have port 5900 (chrome) and 5901 (firefox) opened to incoming connections using VNC viewer. Follow these steps:
 
-- Open VNC-Viewer app and open a connection to 10.180.18.130:5900 for Chrome debug or 5901 for Firefox.
-- Enter "secret" as password when prompted.
+- Open [VNC-Viewer](https://www.realvnc.com/en/connect/download/viewer/) app and open a connection to 10.180.18.130:5900 for Chrome debug or port 5901 for Firefox.
+- Enter **"secret"** (without quotes) as password when prompted.
 - Run your tests against this nodes using config file or this command:
 
 ```npm run tests:remote:debug```
