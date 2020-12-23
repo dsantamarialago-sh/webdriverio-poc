@@ -9,7 +9,8 @@
     "test:ie11": "clear && npx wdio wdio.ie11.conf.js",
     "test:firefox": "clear && npx wdio wdio.firefox.conf.js",
     "test:safari": "clear && npx wdio wdio.safari.conf.js",
-    "test:chrome": "clear && npx wdio wdio.chrome.conf.js"
+    "test:chrome": "clear && npx wdio wdio.chrome.conf.js",
+    "test:remote": "clear && npx wdio wdio.grid.conf.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "@wdio/selenium-standalone-service": "^6.10.4",
     "@wdio/spec-reporter": "^6.8.1",
     "@wdio/sync": "^6.10.4",
+    "global-agent": "^2.1.12",
     "properties-reader": "^2.1.1"
   }
 }
