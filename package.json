@@ -10,7 +10,8 @@
     "test:firefox": "clear && npx wdio wdio.firefox.conf.js",
     "test:safari": "clear && npx wdio wdio.safari.conf.js",
     "test:chrome": "clear && npx wdio wdio.chrome.conf.js",
-    "test:remote": "clear && npx wdio wdio.grid.conf.js"
+    "test:remote": "clear && npx wdio wdio.grid.conf.js",
+    "test:remote:debug": "clear && npx wdio wdio.grid.debug.conf.js"
   },
   "keywords": [],
   "author": "",
