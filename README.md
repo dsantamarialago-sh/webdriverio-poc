@@ -157,3 +157,47 @@ Download plugin Javascript Debugger (nightly) for VsCode and create a profile fi
 ```
 
 Go to debugger tab and run test. Add breakpoint to pause execution. 
+
+## Remote execution
+
+Tests can be executed on a remote Selenium Grid. In order to do so, some config is required:
+
+### Set environment variable for proxy
+
+As conection between your computer and the Grid located in GCP is only available through a proxy, an environment variable should be set for the tests to go through that proxy (SLCD000MGT001). Global Agent library will handle the proxy connection from your tests. 
+
+```export GLOBAL_AGENT_HTTP_PROXY=http://10.131.71.31:80```
+
+### Add Selenium Grid specific config in your config file
+
+This variables should be set in your wdio conf file:
+
+```// Selenium Grid Options
+    protocol: 'http',           // Protocol to connect to Selenium hub ("http" or "https")
+    hostname: '10.180.18.129',  // Selenium hub's IP || Selenium hub's URL
+    port: 4444,                 // Selenium hub's port
+    path: '/wd/hub',            // Selenium hub's register path
+```
+You can also make use of wdio.grid.conf.js included in this repo. 
+
+### Running the tests on the grid
+
+In order to run the tests, just use this command:
+
+```npx wdio ./config/wdio.grid.conf.js```
+
+Or you can use the script included in this package.json
+
+```npm run tests:remote```
+
+### Debugging tests on the grid
+
+If your tests are failing and you want to see their live execution, we setup for you another hub with VNC capabilities. To run it there you should use wdio.grid.debug.conf.js config (or change Hub's IP to 10.180.18.130). The nodes connected to this hub have port 5900 (chrome) and 5901 (firefox) opened to incoming connections using VNC viewer. Follow these steps:
+
+- Open VNC-Viewer app and open a connection to 10.180.18.130:5900 for Chrome debug or 5901 for Firefox.
+- Enter "secret" as password when prompted.
+- Run your tests against this nodes using config file or this command:
+
+```npm run tests:remote:debug```
+
+You will be able to see the execution on these machines...
