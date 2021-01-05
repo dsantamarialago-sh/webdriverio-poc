@@ -11,8 +11,8 @@
     "test:firefox": "clear && npx wdio ./config/wdio.firefox.conf.js",
     "test:safari": "clear && npx wdio ./config/wdio.safari.conf.js",
     "test:chrome": "clear && npx wdio ./config/wdio.chrome.conf.js",
-    "test:remote": "clear && npx wdio ./config/wdio.grid.conf.js",
-    "test:remote:debug": "clear && npx wdio ./config/wdio.grid.debug.conf.js"
+    "test:remote": "clear && export GLOBAL_AGENT_HTTP_PROXY=http://10.131.71.31:80 && npx wdio ./config/wdio.grid.conf.js",
+    "test:remote:debug": "clear && export GLOBAL_AGENT_HTTP_PROXY=http://10.131.71.31:80 && npx wdio ./config/wdio.grid.debug.conf.js"
   },
   "keywords": [],
   "author": "",
