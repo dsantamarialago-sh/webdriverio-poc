@@ -17,8 +17,8 @@ class HomePage {
     /**
     * Opens Home page
     */
-    open() {
-        return browser.url(`https://www.stubhubstage.com`);
+    open(domain) {
+        return browser.url(`https://www.stubhubstage.`+domain);
     }
 
     /*
@@ -27,7 +27,7 @@ class HomePage {
     isLoaded() {
         this.header.isLoaded();
         this.footer.isLoaded();
-        this.jumbotron.waitForDisplayed({timeout:15000});
+        //this.jumbotron.waitForDisplayed({timeout:15000});
             
     }
 }
