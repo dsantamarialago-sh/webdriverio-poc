@@ -16,7 +16,8 @@ $ npm i --save-dev @wdio/cli
 
 Start the TestRunner:
 ```javascript
-$ npx wdio wdio.conf.js
+$ npm run test
+$ npx wdio ./config/wdio.conf.js
 ```
 
 To launch the tests in a specific browser
