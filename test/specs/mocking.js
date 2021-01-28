@@ -1,5 +1,6 @@
 const eventsRecommendation = require('./mocks/eventsRecommendation');
 const homePage = require('../pageobjects/HomePage');
+const eventPage = require('../pageobjects/EventPage');
 
 describe('testing mocking feature for home', () => {
   const mockResponse = (url, response) => {
@@ -7,9 +8,14 @@ describe('testing mocking feature for home', () => {
     mock.respond(response);
   }
   it('API responses', () => {
-    mockResponse('**/bfx/api/search/catalog/events/v3/eventGroupings**', eventsRecommendation);
-    homePage.open();
-    $('.genre-module--entity-list-container').waitForExist();
+    mockResponse('**/bfx/api/search/inventory/v2/listings?**', eventsRecommendation);
+    eventPage.open();
+    eventPage.isLoaded();
+    for(let i = 0; i < eventsRecommendation.listing.length; i++){
+      const section = eventPage.getListingName(i);
+      const expectedSectionName = eventsRecommendation.listing[i].sectionName;
+      expect(section).toHaveText(expectedSectionName);
+    }
     browser.saveScreenshot('./screenshots/image-api-mock.png');
   })
 
