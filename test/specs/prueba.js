@@ -4,7 +4,7 @@ const homePage = require('../pageobjects/HomePage');
 describe('SH home page', () => {
     it('should render required components', () => {
        
-        console.log(`>>> CURRENT DIR: ${process.cwd()}`);
+        console.log(`>>> CURRENT DIR 0: ${process.cwd()}`);
         const propsEn = propsReader('./test/i18n/en-us/messages.properties');
         const propsEs = propsReader('./test/i18n/es-us/messages.properties');
         

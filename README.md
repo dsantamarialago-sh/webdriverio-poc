@@ -203,3 +203,9 @@ If your tests are failing and you want to see their live execution, we setup for
 ```npm run tests:remote:debug```
 
 You will be able to see the execution on these machines...
+
+
+### Running in multi-remote & parallel
+Using 'selenium-standalone' as value in the conf enables it to work with the browsers defined in the capabilities section. Previous attempts using chromedriver left webdriver clueless regarding the path for firefox, making it unable to run and forcing the hassle of manual path configurations. Better to use it this way.
+
+Using the external parallel allows you to attach different reporters and do some manipulation thank to the onComplete hooks, as described in [https://www.npmjs.com/package/wdio-cucumber-parallel-execution](https://www.npmjs.com/package/wdio-cucumber-parallel-execution) but if not required the built-in funcionality based on the "maxInstances" and "maxInstancesPerCapability" should be enough for parallelisation. Way too many of those will definitely crash your machine so adjust in a sensible way. 
