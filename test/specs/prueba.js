@@ -30,5 +30,9 @@ describe('SH home page', () => {
         expect(homePage.header.signInText).toHaveText(expectedEnText);
         expect(homePage.header.signInText).not.toHaveText(expectedEsText);
     
+        const aboutUsLink = $('.FooterLinks-Link');
+        aboutUsLink.click();
+
+        browser.pause(5000);
     });
 });

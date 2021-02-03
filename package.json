@@ -26,5 +26,10 @@
     "@wdio/sync": "^6.10.4",
     "global-agent": "^2.1.12",
     "properties-reader": "^2.1.1"
+  },
+  "dependencies": {
+    "chromedriver": "^88.0.0",
+    "wdio-chromedriver-service": "^6.0.4",
+    "wdio-video-reporter": "^3.1.1"
   }
 }

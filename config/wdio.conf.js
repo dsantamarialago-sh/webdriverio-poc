@@ -1,3 +1,4 @@
+const video = require('wdio-video-reporter');
 exports.config = {
     //
     // ====================
@@ -128,10 +129,15 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
-
-
-
+    reporters: [
+        'spec',
+        [video, {
+            saveAllVideos: true,       // If true, also saves videos for successful test cases
+            videoSlowdownMultiplier: 80, // Higher to get slower videos, lower for faster videos [Value 1-100]
+            recordAllActions: false, // Skip filtering and screenshot everything. (Not recommended) Default: false
+            outputDir: 'videoRecordings'
+        }],
+    ],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
