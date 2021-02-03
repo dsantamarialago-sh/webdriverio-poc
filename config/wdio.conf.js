@@ -1,4 +1,20 @@
 exports.config = {
+    // globals: {
+    //     test_settings: {
+    //         "default": {
+    //         "videos": {
+    //             "enabled": true,
+    //             "delete_on_success": false,
+    //             "path": "",
+    //             "format": "mp4",
+    //             "resolution": "1440x900",
+    //             "fps": 15,
+    //             "display": ":60",
+    //             "pixel_format": "yuv420p"
+    //         }
+    //         }
+    //     }
+    // },
     //
     // ====================
     // Runner Configuration
@@ -7,6 +23,8 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
+    hostname: 'localhost',
+    port: 4444,
     //
     // ==================
     // Specify Test Files
@@ -106,7 +124,10 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: [
+        // 'chromedriver'
+        'selenium-standalone'
+    ],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -181,8 +202,24 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+
+        // Dont forget to put the codec to mjpeg
+        browser.globals = browser.globals || {};
+        browser.globals.test_settings = {
+            selenium_host: 'http://localhost',
+            videos: {
+                enabled: true,
+                delete_on_success: false,
+                path: "videoRecordings/",
+                format: "mp4",
+                resolution: "1440x900",
+                fps: 15,
+                display: ":4444",
+                pixel_format: "yuv420p"
+            }
+        };
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -199,8 +236,12 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function (test, context) {
+        // console.log('beforeTest', {test, context, browser});
+        browser.currentTest = browser.currentTest || {};
+        browser.currentTest.module = test.title.replace(/\s/g, '_');
+        require('wdio-video-recorder').start(browser, () => {console.log('beforeTest done')});
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -216,8 +257,9 @@ exports.config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: function(test, context, { error, result, duration, passed, retries }) {
+        require('wdio-video-recorder').stop(browser, () => {console.log('afterTest done')});
+    },
 
 
     /**
