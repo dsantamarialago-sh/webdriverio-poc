@@ -1,9 +1,10 @@
 const propsReader = require('properties-reader');
 const homePage = require('../pageobjects/HomePage');
+const { addSeverity } = require('@wdio/allure-reporter').default;
 
 describe('SH home page', () => {
     it('should render required components', () => {
-       
+        addSeverity("Critical");
         console.log(`>>> CURRENT DIR: ${process.cwd()}`);
         const propsEn = propsReader('./test/i18n/en-us/messages.properties');
         const propsEs = propsReader('./test/i18n/es-us/messages.properties');

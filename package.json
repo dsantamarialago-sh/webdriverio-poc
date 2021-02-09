@@ -4,7 +4,7 @@
   "description": "WebdriverIO proof of concept",
   "main": "index.js",
   "scripts": {
-    "test": "npx wdio wdio.conf.js",
+    "test": "clear && npx wdio wdio.conf.js && npm run allure",
     "test:multi": "npx wdio wdio.multibrowser.conf.js",
     "test:ie11": "clear && npx wdio wdio.ie11.conf.js",
     "test:firefox": "clear && npx wdio wdio.firefox.conf.js",
@@ -23,8 +23,8 @@
     "@wdio/selenium-standalone-service": "^6.10.4",
     "@wdio/spec-reporter": "^6.8.1",
     "@wdio/sync": "^6.10.4",
+    "allure-commandline": "^2.13.0",
     "properties-reader": "^2.1.1",
-    "wdio-json-reporter": "^2.0.0",
-    "allure-commandline": "^2.13.0"
+    "wdio-json-reporter": "^2.0.0"
   }
 }
