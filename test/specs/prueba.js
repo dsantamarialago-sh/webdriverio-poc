@@ -29,6 +29,6 @@ describe('SH home page', () => {
         browser.saveScreenshot('./screenshots/image.png');
         expect(homePage.header.signInText).toHaveText(expectedEnText);
         expect(homePage.header.signInText).not.toHaveText(expectedEsText);
-    
+        expect(browser.checkFullPageScreen('fullPage', { /* some options */ })).toBeLessThan(8);
     });
 });

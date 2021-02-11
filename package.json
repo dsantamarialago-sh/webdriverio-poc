@@ -6,6 +6,7 @@
   "scripts": {
     "test": "clear && npx wdio ./config/wdio.conf.js",
     "test:debug": "clear && DEBUG=TRUE npx wdio ../config/wdio.debug.conf.js",
+    "test:visual": "clear && npx wdio ./config/wdio-visual-regresion.conf.js",
     "test:multi": "clear && npx wdio ./config/wdio.multibrowser.conf.js",
     "test:ie11": "clear && npx wdio ./config/wdio.ie11.conf.js",
     "test:firefox": "clear && npx wdio ./config/wdio.firefox.conf.js",
