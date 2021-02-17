@@ -1,7 +1,21 @@
 const propsReader = require('properties-reader');
 const homePage = require('../pageobjects/HomePage');
 
+let metrics = {
+    firstMeaningfulPaint: 0,
+    firstInteractive: 0,
+    speedIndex: 0
+};
+let score;
+
 describe('SH home page', () => {
+    before(() => {
+        if (browser.enablePerformanceAudits) {
+            browser.enablePerformanceAudits();
+            metrics = browser.getMetrics();
+            score = browser.getPerformanceScore();
+        }
+    });
     it('should render required components', () => {
        
         console.log(`>>> CURRENT DIR: ${process.cwd()}`);
@@ -30,5 +44,23 @@ describe('SH home page', () => {
         expect(homePage.header.signInText).toHaveText(expectedEnText);
         expect(homePage.header.signInText).not.toHaveText(expectedEsText);
     
+    });
+
+    it('should not increase firstMeaningfulPaint limit', () => {
+        expect(metrics.firstMeaningfulPaint < (3 * 1000)).toBe(true); // 3 seconds
+    });
+    
+    it('should not increase firstInteractive limi', function () {
+        expect(metrics.firstInteractive < (3 * 1000)).toBe(true); // 3 seconds
+    });
+    
+    it('should not increase speedIndex limit', () => {
+        expect(metrics.speedIndex < (4.2 * 1000)).toBe(true);
+    });
+    
+    it('should have a minimum Lighthouse performance score', () => {
+        if (score) {
+            expect(score > 0.92).toBe(true);
+        }
     });
 });

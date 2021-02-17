@@ -11,6 +11,7 @@
     "test:firefox": "clear && npx wdio ./config/wdio.firefox.conf.js",
     "test:safari": "clear && npx wdio ./config/wdio.safari.conf.js",
     "test:chrome": "clear && npx wdio ./config/wdio.chrome.conf.js",
+    "test:performance": "clear && npx wdio ./config/wdio.performance.conf.js",
     "test:remote": "clear && export GLOBAL_AGENT_HTTP_PROXY=http://10.131.71.31:80 && npx wdio ./config/wdio.grid.conf.js",
     "test:remote:debug": "clear && export GLOBAL_AGENT_HTTP_PROXY=http://10.131.71.31:80 && npx wdio ./config/wdio.grid.debug.conf.js"
   },
@@ -19,12 +20,15 @@
   "license": "ISC",
   "devDependencies": {
     "@wdio/cli": "^6.10.5",
+    "@wdio/devtools-service": "^7.0.5",
     "@wdio/local-runner": "^6.10.5",
     "@wdio/mocha-framework": "^6.10.4",
     "@wdio/selenium-standalone-service": "^6.10.4",
     "@wdio/spec-reporter": "^6.8.1",
     "@wdio/sync": "^6.10.4",
+    "chromedriver": "^88.0.0",
     "global-agent": "^2.1.12",
-    "properties-reader": "^2.1.1"
+    "properties-reader": "^2.1.1",
+    "wdio-chromedriver-service": "^6.0.3"
   }
 }
