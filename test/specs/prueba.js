@@ -1,12 +1,12 @@
 const propsReader = require('properties-reader');
 const homePage = require('../pageobjects/HomePage');
+const i18n = require('../i18n/i18n');
 
 describe('SH home page', () => {
     it('should render required components', () => {
-       
         console.log(`>>> CURRENT DIR: ${process.cwd()}`);
-        const propsEn = propsReader('./test/i18n/en-us/messages.properties');
-        const propsEs = propsReader('./test/i18n/es-us/messages.properties');
+        
+        const currentLocale = 'en-US';
         
         homePage.open();
         homePage.isLoaded();
@@ -19,16 +19,16 @@ describe('SH home page', () => {
 
         const text = homePage.header.signInText.getText();
         console.log(`>>> TEXT: ${text}`);
-       
-        const expectedEnText = propsEn.get('Header.menu.my-profile');
-        console.log(`>>> Expected EN: ${expectedEnText}`);
-        
-        const expectedEsText = propsEs.get('Header.menu.my-profile');           
-        console.log(`>>> Expected ES: ${expectedEsText}`);
 
+        Object.keys(i18n).forEach((key) => {
+            const value = i18n[key].get('Header.menu.my-profile');
+            if (key === currentLocale) {
+                expect(homePage.header.signInText).toHaveText(value);
+            }
+            else {
+                expect(homePage.header.signInText).not.toHaveText(value);
+            }
+        });
         browser.saveScreenshot('./screenshots/image.png');
-        expect(homePage.header.signInText).toHaveText(expectedEnText);
-        expect(homePage.header.signInText).not.toHaveText(expectedEsText);
-    
     });
 });
