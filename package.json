@@ -6,6 +6,8 @@
   "scripts": {
     "test": "clear && npx wdio ./config/wdio.conf.js",
     "test:debug": "clear && DEBUG=TRUE npx wdio ../config/wdio.debug.conf.js",
+    "test:dynamic:suite1": "clear && DEBUG=TRUE npx wdio ./config/wdio.dynamic.conf.js --suite suite1",
+    "test:dynamic:suite2": "clear && DEBUG=TRUE npx wdio ./config/wdio.dynamic.conf.js --suite suite2",
     "test:multi": "clear && npx wdio ./config/wdio.multibrowser.conf.js",
     "test:ie11": "clear && npx wdio ./config/wdio.ie11.conf.js",
     "test:firefox": "clear && npx wdio ./config/wdio.firefox.conf.js",
