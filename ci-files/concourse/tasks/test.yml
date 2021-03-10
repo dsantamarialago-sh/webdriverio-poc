@@ -1,0 +1,9 @@
+---
+platform: linux
+
+inputs:
+  - name: github-repo
+
+run:
+  path: github-repo/((TEST_RUN_SCRIPT_FILE))
+  

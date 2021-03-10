@@ -1,0 +1,11 @@
+REGIONS: onprem
+GITHUB_URL: git@github.com:stubhub/Stubhub-npm.bamboo.git
+GIT_REPO: dsantamarialago-sh/webdriverio-poc
+BRANCH: ci-support
+GIT_API_END_POINT: https://api.github.com
+TEST_RUN_TASK_FILE: ci-files/concourse/tasks/test.yml
+TEST_RUN_SCRIPT_FILE: ci-files/concourse/tasks/test.sh
+NPM_CLIENT_BASIC_AUTH_URL: https://artifactory.prdstubsys.cloud/artifactory/api/npm/auth
+NODE_PULL_URL: artifactory.prdstubsys.cloud/artifactory/api/npm/npm-dev
+SH_ENV_TYPE: dev
+BUILD_IMAGE_PATH: sdlc/nodejs
