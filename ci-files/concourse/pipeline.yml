@@ -28,10 +28,11 @@ resources:
     - ((REGIONS))
   source: &repo-source
     uri: ((GITHUB_URL))
+    access_token: ((github_deploy_token))
+    private_key: ((github-deploy-key.private_key))
     repo: ((GIT_REPO))
-    branch: ((BRANCH))
+    base: ((BRANCH))
     api_endpoint: ((GIT_API_END_POINT))
-    only_mergeable: true
 - name: nodejs
   type: docker-image
   tags:
