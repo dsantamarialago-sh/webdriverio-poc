@@ -10,7 +10,7 @@ jobs:
       - get: nodejs
         tags:
         - ((REGIONS))
-  - task: jest-tests
+  - task: ui-tests
     file: github-repo/((TEST_RUN_TASK_FILE))
     tags:
       - ((REGIONS))
@@ -21,25 +21,13 @@ jobs:
       REGISTRY_URL: ((NODE_PULL_URL))
       REGISTRY_USER: ((registry_user))
       SH_ENV_TYPE: ((SH_ENV_TYPE))
-  on_success:
-      do:
-      - put: github-repo
-        tags:
-          - ((REGIONS))
-        params:
-          path: github-repo
-          status: ((TEST_SUCCESS_STATUS))
-          context: ((TEST_TASK_CONTEXT))
-          comment: results-dir/final_comment.txt
 resources:
 - name: github-repo
-  type: pull-request
+  type: git
   tags:
     - ((REGIONS))
   source: &repo-source
     uri: ((GITHUB_URL))
-    access_token: ((github_deploy_token))
-    private_key: ((github-deploy-key.private_key))
     repo: ((GIT_REPO))
     branch: ((BRANCH))
     api_endpoint: ((GIT_API_END_POINT))
@@ -52,15 +40,4 @@ resources:
     username: ((registry_user))
     password: ((registry_pw))
     repository: ((private_registry_url))/((BUILD_IMAGE_PATH))
-    tag: 10
-- name: SDLC-Pipeline-Library
-  type: git
-  tags:
-    - ((REGIONS))
-  source: &repo-source
-    uri: ((GITHUB_URL_SDLC))
-    access_token: ((github_deploy_token))
-    private_key: ((github-deploy-key.private_key))
-    repo: ((GIT_ORG_SDLC))/((GIT_REPO_SDLC))
-    base: ((SDLC_BRANCH))
-    api_endpoint: ((GIT_API_END_POINT))
+    tag: 14

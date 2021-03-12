@@ -1,5 +1,5 @@
 REGIONS: onprem
-GITHUB_URL: git@github.com:stubhub/Stubhub-npm.bamboo.git
+GITHUB_URL: git@github.com:dsantamarialago-sh/webdriverio-poc.git
 GIT_REPO: dsantamarialago-sh/webdriverio-poc
 BRANCH: ci-support
 GIT_API_END_POINT: https://api.github.com
