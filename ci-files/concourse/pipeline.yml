@@ -31,7 +31,7 @@ resources:
     access_token: ((github_deploy_token))
     private_key: ((github-deploy-key.private_key))
     repo: ((GIT_REPO))
-    base: ((BRANCH))
+    branch: ((BRANCH))
     api_endpoint: ((GIT_API_END_POINT))
 - name: nodejs
   type: docker-image
@@ -41,4 +41,4 @@ resources:
     username: ((registry_user))
     password: ((registry_pw))
     repository: ((private_registry_url))/((BUILD_IMAGE_PATH))
-    tag: 14
+    tag: ((NODE_TAG))

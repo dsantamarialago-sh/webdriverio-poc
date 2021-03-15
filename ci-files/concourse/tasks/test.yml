@@ -5,5 +5,4 @@ inputs:
   - name: github-repo
 
 run:
-  path: github-repo/((TEST_RUN_SCRIPT_FILE))
-  
+  path: github-repo/ci-files/concourse/tasks/test.sh
