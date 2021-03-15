@@ -11,7 +11,7 @@ describe('SH home page', () => {
             //sleep(15000);
             expect(homePage.header.logo.isDisplayed()).toBe(true);
             expect(homePage.header.searchBox.isDisplayed()).toBe(true);
-            expect(homePage.jumbotron.isDisplayed()).toBe(true);
+            expect(homePage.jumbotron.isDisplayed()).toBe(false);
             expect(homePage.footer.fanProtectLogo.isDisplayed()).toBe(true);
             expect(homePage.footer.fanProtectLink).toHaveAttributeContaining('href', 'http://www.stubhub.'+data.d+'/promise/')
         });
