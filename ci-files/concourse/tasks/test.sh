@@ -8,7 +8,7 @@ npm -version
 set -e
 
 cd github-repo
-./ci-files/concourse/config/gitConfig.sh
+.ci-files/concourse/config/gitConfig.sh
 
 echo "Setting npm registry URL: ${REGISTRY_URL}"
 npm config set registry "https://${REGISTRY_URL}"
